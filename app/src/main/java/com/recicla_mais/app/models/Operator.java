@@ -8,6 +8,7 @@ import org.hibernate.type.SqlTypes;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 public class Operator {
@@ -15,16 +16,21 @@ public class Operator {
   @GeneratedValue(strategy = jakarta.persistence.GenerationType.UUID)
   @JdbcTypeCode(SqlTypes.CHAR)
   private UUID id;
+  @NotBlank(message = "O nome é obrigatório")
   private String name;
+  @NotBlank(message = "O email é obrigatório")
   private String email;
+  @NotBlank(message = "O password é obrigatório")
   private String password;
+  @NotBlank(message = "O documento é obrigatório")
   private String document;
+  @NotBlank(message = "O tipo de documento é obrigatório")
   private String documentType;
+  @NotBlank(message = "O número de telefone é obrigatório")
   private String phoneNumber;
 
   public Operator() {}
 
-  // Getters and Setters
   public UUID getId() {
     return id;
   }

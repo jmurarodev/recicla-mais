@@ -1,8 +1,8 @@
 package com.recicla_mais.app.services;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.recicla_mais.app.models.Operator;
@@ -20,8 +20,10 @@ public class OperatorService {
     return operatorRepository.save(operator);
   }
 
-  public Optional<Operator> getOperatorById(UUID id) {
-    return operatorRepository.findById(id);
+  public Operator getOperatorById(UUID id) {
+    return operatorRepository.findById(id).orElseThrow(() ->
+      new ResourceNotFoundException("Operador com ID " + id + " não encontrado.")
+    );
   }
 
   public List<Operator> getAllOperators() {
@@ -29,16 +31,44 @@ public class OperatorService {
   }
 
   public Operator updateOperator(UUID id, Operator operator) {
-    if (!operatorRepository.existsById(id)) {
-      return null;
+    Operator existingOperator = operatorRepository.findById(id).orElseThrow(() ->
+      new ResourceNotFoundException("Operador com ID " + id + " não encontrado.")
+    );
+
+    if (operator.getName() != null) {
+      existingOperator.setName(operator.getName());
     }
     
-    operator.setId(id);
+    if (operator.getEmail() != null) {
+      existingOperator.setEmail(operator.getEmail());
+    }
     
-    return operatorRepository.save(operator);
+    if (operator.getPassword() != null) {
+      existingOperator.setPassword(operator.getPassword());
+    }
+    
+    if (operator.getDocument() != null) {
+      existingOperator.setDocument(operator.getDocument());
+    }
+    
+    if (operator.getDocumentType() != null) {
+      existingOperator.setDocumentType(operator.getDocumentType());
+    }
+
+    if (operator.getPhoneNumber() != null) {
+      existingOperator.setPhoneNumber(operator.getPhoneNumber());
+    }
+    
+    existingOperator.setId(id);
+    
+    return operatorRepository.save(existingOperator);
   }
 
   public void deleteOperator(UUID id) {
-    operatorRepository.deleteById(id);
+    Operator operator = operatorRepository.findById(id).orElseThrow(() ->
+      new ResourceNotFoundException("Operador com ID " + id + " não encontrado.")
+    );
+    
+    operatorRepository.delete(operator);
   }
 }
