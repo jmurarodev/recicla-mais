@@ -10,6 +10,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 public class Schedule {
@@ -17,14 +18,21 @@ public class Schedule {
   @GeneratedValue(strategy = jakarta.persistence.GenerationType.UUID)
   @JdbcTypeCode(SqlTypes.CHAR)
   private UUID id;
-  LocalDateTime dateTime;
-  String street;
-  String number;
-  String neighborhood;
-  String city;
-  String shortState;
-  String zipCode;
-  String status;
+  @NotBlank(message = "A data é obrigatória")
+  private LocalDateTime dateTime;
+  @NotBlank(message = "A rua é obrigatória")
+  private String street;
+  @NotBlank(message = "O número é obrigatório")
+  private String number;
+  @NotBlank(message = "O bairro é obrigatório")
+  private String neighborhood;
+  @NotBlank(message = "A cidade é obrigatória")
+  private String city;
+  @NotBlank(message = "O Estado é obrigatório")
+  private String shortState;
+  @NotBlank(message = "O CEP obrigatória")
+  private String zipCode;
+  private String status;
 
   @ManyToOne
   private Client client;
@@ -34,8 +42,6 @@ public class Schedule {
 
   public Schedule() {}
 
-  // Getters and Setters
-  
   public UUID getId() {
     return id;
   }
