@@ -2,6 +2,7 @@ package com.recicla_mais.app.services;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
@@ -20,7 +21,7 @@ public class ScheduleService {
     return scheduleRepository.save(schedule);
   }
 
-  public Optional<Schedule> getScheduleById(Long id) {
+  public Optional<Schedule> getScheduleById(UUID id) {
     return scheduleRepository.findById(id);
   }
 
@@ -28,7 +29,7 @@ public class ScheduleService {
     return scheduleRepository.findAll();
   }
 
-  public Schedule updateSchedule(Long id, Schedule schedule) {
+  public Schedule updateSchedule(UUID id, Schedule schedule) {
     if (!scheduleRepository.existsById(id)) {
       return null;
     }
@@ -38,7 +39,7 @@ public class ScheduleService {
     return scheduleRepository.save(schedule);
   }
 
-  public void deleteSchedule(Long id) {
+  public void deleteSchedule(UUID id) {
     scheduleRepository.deleteById(id);
   }
 }

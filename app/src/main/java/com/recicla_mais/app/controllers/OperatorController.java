@@ -2,6 +2,7 @@ package com.recicla_mais.app.controllers;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -31,7 +32,7 @@ public class OperatorController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Operator> getOperatorById(@PathVariable Long id) {
+    public ResponseEntity<Operator> getOperatorById(@PathVariable UUID id) {
         Optional<Operator> operator = operatorService.getOperatorById(id);
         return operator.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
@@ -42,7 +43,7 @@ public class OperatorController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Operator> updateOperator(@PathVariable Long id, @RequestBody Operator operator) {
+    public ResponseEntity<Operator> updateOperator(@PathVariable UUID id, @RequestBody Operator operator) {
         Operator updatedOperator = operatorService.updateOperator(id, operator);
 
         if (updatedOperator == null) {
@@ -53,7 +54,7 @@ public class OperatorController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteOperator(@PathVariable Long id) {
+    public void deleteOperator(@PathVariable UUID id) {
         operatorService.deleteOperator(id);
     }
 }

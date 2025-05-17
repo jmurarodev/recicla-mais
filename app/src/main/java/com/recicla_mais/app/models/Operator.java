@@ -1,15 +1,20 @@
 package com.recicla_mais.app.models;
 
+import java.util.UUID;
+
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
 public class Operator {
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+  @GeneratedValue(strategy = jakarta.persistence.GenerationType.UUID)
+  @JdbcTypeCode(SqlTypes.CHAR)
+  private UUID id;
   private String name;
   private String email;
   private String password;
@@ -19,30 +24,12 @@ public class Operator {
 
   public Operator() {}
 
-  public Operator(
-    Long id,
-    String name,
-    String email,
-    String password,
-    String document,
-    String documentType,
-    String phoneNumber
-  ) {
-    this.id = id;
-    this.name = name;
-    this.email = email;
-    this.password = password;
-    this.document = document;
-    this.documentType = documentType;
-    this.phoneNumber = phoneNumber;
-  }
-
   // Getters and Setters
-  public Long getId() {
+  public UUID getId() {
     return id;
   }
 
-  public void setId(Long id) {
+  public void setId(UUID id) {
     this.id = id;
   }
 

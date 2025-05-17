@@ -1,30 +1,43 @@
 package com.recicla_mais.app.models;
+import java.util.UUID;
+
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 public class Client {
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+  @GeneratedValue(strategy = jakarta.persistence.GenerationType.UUID)
+  @JdbcTypeCode(SqlTypes.CHAR)
+  private UUID id;
+  @NotBlank(message = "O nome é obrigatório")
   private String name;
+  @NotBlank(message = "O email é obrigatório")
   private String email;
+  @NotBlank(message = "O password é obrigatório")
   private String password;
+  @NotBlank(message = "O documento é obrigatório")
   private String document;
+  @NotBlank(message = "O tipo de documento é obrigatório")
   private String documentType;
+  @NotBlank(message = "O número de telefone é obrigatório")
   private String phoneNumber;
-  private Boolean isAdmin;
+  private final Boolean isAdmin = false;
 
   public Client() {}
 
   // Getters and Setters
-  public Long getId() {
+  public UUID getId() {
     return id;
   }
 
-  public void setId(Long id) {
+  public void setId(UUID id) {
     this.id = id;
   }
 
@@ -32,7 +45,7 @@ public class Client {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(String name) throws IllegalArgumentException {
     this.name = name;
   }
 

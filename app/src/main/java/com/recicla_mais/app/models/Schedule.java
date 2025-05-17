@@ -1,18 +1,22 @@
 package com.recicla_mais.app.models;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
+
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Schedule {
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+  @GeneratedValue(strategy = jakarta.persistence.GenerationType.UUID)
+  @JdbcTypeCode(SqlTypes.CHAR)
+  private UUID id;
   LocalDateTime dateTime;
   String street;
   String number;
@@ -21,8 +25,6 @@ public class Schedule {
   String shortState;
   String zipCode;
   String status;
-  String clientId;
-  String operatorId;
 
   @ManyToOne
   private Client client;
@@ -34,11 +36,11 @@ public class Schedule {
 
   // Getters and Setters
   
-  public Long getId() {
+  public UUID getId() {
     return id;
   }
 
-  public void setId(Long id) {
+  public void setId(UUID id) {
     this.id = id;
   }
 
@@ -104,22 +106,6 @@ public class Schedule {
 
   public void setStatus(String status) {
     this.status = status;
-  }
-
-  public String getClientId() {
-    return clientId;
-  }
-
-  public void setClientId(String clientId) {
-    this.clientId = clientId;
-  }
-
-  public String getOperatorId() {
-    return operatorId;
-  }
-
-  public void setOperatorId(String operatorId) {
-    this.operatorId = operatorId;
   }
 
   public Client getClient() {

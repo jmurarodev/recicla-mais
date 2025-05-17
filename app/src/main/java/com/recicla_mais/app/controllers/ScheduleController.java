@@ -2,11 +2,13 @@ package com.recicla_mais.app.controllers;
 
 import com.recicla_mais.app.models.Schedule;
 import com.recicla_mais.app.services.ScheduleService;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/schedules")
@@ -23,7 +25,7 @@ public class ScheduleController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Schedule> getScheduleById(@PathVariable Long id) {
+    public ResponseEntity<Schedule> getScheduleById(@PathVariable UUID id) {
         Optional<Schedule> schedule = scheduleService.getScheduleById(id);
         return schedule.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
@@ -34,7 +36,7 @@ public class ScheduleController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Schedule> updateSchedule(@PathVariable Long id, @RequestBody Schedule schedule) {
+    public ResponseEntity<Schedule> updateSchedule(@PathVariable UUID id, @RequestBody Schedule schedule) {
         Schedule updatedSchedule = scheduleService.updateSchedule(id, schedule);
         
         if (updatedSchedule == null) {
@@ -45,7 +47,7 @@ public class ScheduleController {
       }
 
     @DeleteMapping("/{id}")
-    public void deleteSchedule(@PathVariable Long id) {
+    public void deleteSchedule(@PathVariable UUID id) {
         scheduleService.deleteSchedule(id);
     }
 }

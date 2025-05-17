@@ -1,6 +1,7 @@
 package com.recicla_mais.app.services;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
@@ -19,7 +20,7 @@ public class OperatorService {
     return operatorRepository.save(operator);
   }
 
-  public Optional<Operator> getOperatorById(Long id) {
+  public Optional<Operator> getOperatorById(UUID id) {
     return operatorRepository.findById(id);
   }
 
@@ -27,7 +28,7 @@ public class OperatorService {
     return operatorRepository.findAll();
   }
 
-  public Operator updateOperator(Long id, Operator operator) {
+  public Operator updateOperator(UUID id, Operator operator) {
     if (!operatorRepository.existsById(id)) {
       return null;
     }
@@ -37,7 +38,7 @@ public class OperatorService {
     return operatorRepository.save(operator);
   }
 
-  public void deleteOperator(Long id) {
+  public void deleteOperator(UUID id) {
     operatorRepository.deleteById(id);
   }
 }
