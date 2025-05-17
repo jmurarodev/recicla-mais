@@ -1,8 +1,8 @@
-package com.recicla_mais.demo.repositories;
+package com.recicla_mais.app.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.recicla_mais.demo.models.Operator;
+import com.recicla_mais.app.models.Operator;
 
 public interface OperatorRepository extends JpaRepository<Operator, Long> {
   // Custom query methods can be defined here if needed

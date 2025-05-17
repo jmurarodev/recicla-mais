@@ -1,12 +1,12 @@
-package com.recicla_mais.demo.services;
+package com.recicla_mais.app.services;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.recicla_mais.demo.models.Client;
-import com.recicla_mais.demo.repositories.ClientRepository;
+import com.recicla_mais.app.models.Client;
+import com.recicla_mais.app.repositories.ClientRepository;
 
 @Service
 public class ClientService {

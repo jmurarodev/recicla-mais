@@ -1,4 +1,4 @@
-package com.recicla_mais.demo.models;
+package com.recicla_mais.app.models;
 
 import java.time.LocalDateTime;
 

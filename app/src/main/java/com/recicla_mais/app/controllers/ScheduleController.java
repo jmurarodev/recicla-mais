@@ -1,7 +1,7 @@
-package com.recicla_mais.demo.controllers;
+package com.recicla_mais.app.controllers;
 
-import com.recicla_mais.demo.models.Schedule;
-import com.recicla_mais.demo.services.ScheduleService;
+import com.recicla_mais.app.models.Schedule;
+import com.recicla_mais.app.services.ScheduleService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

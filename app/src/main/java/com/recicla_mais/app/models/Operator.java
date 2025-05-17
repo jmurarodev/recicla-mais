@@ -1,11 +1,12 @@
-package com.recicla_mais.demo.models;
+package com.recicla_mais.app.models;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Client {
+public class Operator {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
@@ -15,9 +16,26 @@ public class Client {
   private String document;
   private String documentType;
   private String phoneNumber;
-  private Boolean isAdmin;
 
-  public Client() {}
+  public Operator() {}
+
+  public Operator(
+    Long id,
+    String name,
+    String email,
+    String password,
+    String document,
+    String documentType,
+    String phoneNumber
+  ) {
+    this.id = id;
+    this.name = name;
+    this.email = email;
+    this.password = password;
+    this.document = document;
+    this.documentType = documentType;
+    this.phoneNumber = phoneNumber;
+  }
 
   // Getters and Setters
   public Long getId() {
@@ -74,9 +92,5 @@ public class Client {
 
   public void setPhoneNumber(String phoneNumber) {
     this.phoneNumber = phoneNumber;
-  }
-
-  public Boolean getIsAdmin() {
-    return isAdmin;
   }
 }

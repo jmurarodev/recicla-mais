@@ -1,4 +1,4 @@
-package com.recicla_mais.demo.controllers;
+package com.recicla_mais.app.controllers;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.recicla_mais.demo.models.Client;
-import com.recicla_mais.demo.services.ClientService;
+import com.recicla_mais.app.models.Client;
+import com.recicla_mais.app.services.ClientService;
 
 @RestController
 @RequestMapping("/clients")

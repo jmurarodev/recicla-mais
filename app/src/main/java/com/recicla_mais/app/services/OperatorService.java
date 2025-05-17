@@ -1,11 +1,11 @@
-package com.recicla_mais.demo.services;
+package com.recicla_mais.app.services;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.recicla_mais.demo.models.Operator;
-import com.recicla_mais.demo.repositories.OperatorRepository;
+import com.recicla_mais.app.models.Operator;
+import com.recicla_mais.app.repositories.OperatorRepository;
 
 @Service
 public class OperatorService {

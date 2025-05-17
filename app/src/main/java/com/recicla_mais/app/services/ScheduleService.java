@@ -1,12 +1,12 @@
-package com.recicla_mais.demo.services;
+package com.recicla_mais.app.services;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.recicla_mais.demo.models.Schedule;
-import com.recicla_mais.demo.repositories.ScheduleRepository;
+import com.recicla_mais.app.models.Schedule;
+import com.recicla_mais.app.repositories.ScheduleRepository;
 
 @Service
 public class ScheduleService {
