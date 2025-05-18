@@ -1,7 +1,6 @@
 package com.recicla_mais.app.services;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;

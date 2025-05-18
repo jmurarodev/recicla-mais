@@ -11,7 +11,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Schedule {
@@ -19,8 +18,7 @@ public class Schedule {
   @GeneratedValue(strategy = jakarta.persistence.GenerationType.UUID)
   @JdbcTypeCode(SqlTypes.CHAR)
   private UUID id;
- @NotNull(message = "A data e hora são obrigatórias")
-  private LocalDateTime dateTime;
+  private LocalDateTime dateTime = LocalDateTime.now();
   @NotBlank(message = "A rua é obrigatória")
   private String street;
   @NotBlank(message = "O número é obrigatório")
